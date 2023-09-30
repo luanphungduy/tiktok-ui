@@ -6,13 +6,13 @@
     padding: 4px 16px;
     font-size: 1.6rem;
     font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: var(--white);
+    font-family: 'ProximaNova', sans-serif;
     border: 1px solid transparent;
-    user-select: none;
-    font-family: 'Montserrat', sans-serif;
+    border-radius: 4px;
     color: var(--text-color);
+    background-color: var(--white);
+    user-select: none;
+    cursor: pointer;
 
     + .wrapper {
         margin-left: 8px;
