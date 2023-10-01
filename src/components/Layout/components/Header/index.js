@@ -8,12 +8,14 @@ import {
     faUserAlt,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
+import routesConfig from '~/config/routes';
 import Search from '../Search';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
@@ -93,7 +95,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo.default} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo.default} alt="Tiktok" />
+                </Link>
 
                 <Search />
 
@@ -127,7 +131,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-sg.tiktokcdn.com/daweme/100x100/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1696154400&x-signature=mjS9liTrnE5H3Q%2BvlQEf2ycCDKA%3D"
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1696154400&x-signature=mjS9liTrnE5H3Q%2BvlQEf2ycCDKA%3D"
                                 alt="Phung Duy Luan"
                                 fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/cb74fe82d325955ed732602f784fb617~c5_100x100.jpeg?x-expires=1696215600&x-signature=ueJlUJkw12aal4%2BWfTBvZcaxWsU%3D"
                             />
