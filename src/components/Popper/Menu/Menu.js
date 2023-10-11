@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import MenuItem from './MenuItem';
@@ -56,7 +56,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
     };
 
     return (
-        <Tippy
+        <HeadlessTippy
             interactive
             delay={[0, 700]}
             hideOnClick={hideOnClick}
@@ -66,7 +66,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             onHide={handleReset}
         >
             {children}
-        </Tippy>
+        </HeadlessTippy>
     );
 }
 
