@@ -25,6 +25,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                 <MenuItem
                     key={index}
                     data={item}
+                    isBelongsToSubMenu={history.length > 1}
                     onClick={() => {
                         if (isParent) {
                             setHistory((pre) => [...pre, item.children]);
@@ -42,7 +43,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
     };
 
     const renderResult = (attrs) => (
-        <div className={cx('menu-list')} tabIndex="-1">
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
             <PopperWrapper className={cx('menu-popper')}>
                 {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
                 <div className={cx('menu-body')}>{renderItems()}</div>
@@ -50,7 +51,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         </div>
     );
 
-    // Reset to firsr page
+    // Reset to first page
     const handleReset = () => {
         setHistory((pre) => pre.slice(0, 1));
     };

@@ -1,5 +1,4 @@
 .wrapper {
-    --search-border-radius: 92px;
     --search-height: 46px;
     --search-top-space: 9px;
     --search-button-width: 52px;
@@ -19,14 +18,16 @@
 .inner {
     height: 100%;
     width: var(--default-layout-width);
-    padding: 0 var(--default-layout-horizontal-space);
+    padding-right: 24px;
+    padding-left: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .logo-link {
-    display: flex;
+    display: inline-flex;
+    min-width: 268px;
 }
 
 // Actions
@@ -36,9 +37,9 @@
 }
 
 .more-btn {
-    font-style: 1.2rem;
-    margin-left: 24px;
-    padding: 4px 8px;
+    font-size: 2rem;
+    margin-left: 16px;
+    padding: 0px 4px;
     background-color: transparent;
 }
 
@@ -48,14 +49,14 @@
     color: #161823;
     background-color: transparent;
     font-size: 2.6rem;
-    padding: 4px 10px;
+    margin-left: 16px;
     cursor: pointer;
 }
 
 .badge {
     position: absolute;
-    top: -3px;
-    right: 0px;
+    top: -6px;
+    right: -10px;
     padding: 0px 6px;
     height: 2rem;
     line-height: 2rem;
@@ -72,6 +73,30 @@
     height: 32px;
     object-fit: cover;
     border-radius: 50%;
-    margin-left: 14px;
+    margin-left: 24px;
     cursor: pointer;
+}
+
+// Custom css btn
+.header-upload-btn {
+    min-width: 110px;
+    padding: 0 16px;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    margin-right: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.header-login-btn {
+    min-height: 36px;
+    min-width: 100px;
+    padding: 6px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    border-radius: 4px;
+    margin-left: 16px;
 }

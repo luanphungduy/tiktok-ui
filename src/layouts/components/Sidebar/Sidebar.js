@@ -6,9 +6,13 @@ import {
     HomeIcon,
     UsersGroupIcon,
     LiveIcon,
+    ExploreIcon,
     HomeActiveIcon,
     UsersGroupActiveIcon,
     LiveActiveIcon,
+    ExploreActiveIcon,
+    UserIcon,
+    UserActiveIcon,
 } from '~/components/Icons';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
 
@@ -18,16 +22,27 @@ function Sidebar() {
     return (
         <aside className={cx('wrapper')}>
             <Menu>
-                <MenuItem title="For you" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
+                <MenuItem title="For You" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem
                     title="Following"
                     to={config.routes.following}
                     icon={<UsersGroupIcon />}
                     activeIcon={<UsersGroupActiveIcon />}
                 />
+                <MenuItem
+                    title="Explore"
+                    to={config.routes.explore}
+                    icon={<ExploreIcon />}
+                    activeIcon={<ExploreActiveIcon />}
+                />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
+                <MenuItem
+                    title="Profile"
+                    to={config.routes.profile}
+                    icon={<UserIcon width="2.4rem" height="2.4rem" />}
+                    activeIcon={<UserActiveIcon />}
+                />
             </Menu>
-            <SuggestedAccounts label="Suggested accounts" />
             <SuggestedAccounts label="Following accounts" />
         </aside>
     );

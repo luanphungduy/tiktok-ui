@@ -1,23 +1,20 @@
+// Common CSS
 .wrapper {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
-    padding: 4px 16px;
-    font-size: 1.6rem;
-    font-weight: 700;
+
     font-family: var(--font-family);
+
+    border-radius: 2px;
     border: 1px solid transparent;
-    border-radius: 4px;
-    color: var(--text-color);
+
     background-color: var(--white);
+
     user-select: none;
     cursor: pointer;
 
-    + .wrapper {
-        margin-left: 8px;
-    }
-
+    // Btn is disabled
     &.disabled {
         pointer-events: none;
         opacity: 0.5;
@@ -32,24 +29,17 @@
 .icon {
     display: inline-block;
     width: 20px;
-    text-align: center;
+    height: 20px;
 }
 
-// Button types
-.round {
-    border-radius: 999px;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
-    border-color: rgba(22, 24, 35, 0.12);
-
-    &:hover {
-        border-color: rgba(22, 24, 35, 0.2);
-        background-color: rgba(22, 24, 35, 0.03);
-    }
+.title {
+    flex: 1;
 }
 
+// Button types -> custom color and hover
 .primary {
-    background-color: var(--primary);
     color: var(--white);
+    background-color: var(--primary);
     border-color: var(--primary);
 
     &:hover {
@@ -69,17 +59,11 @@
 }
 
 .text {
+    color: var(--text-color);
+    border-color: rgba(22, 24, 35, 0.12);
+    background-color: rgba(255, 255, 255, 1);
+
     &:hover {
-        text-decoration: underline;
+        background-color: rgba(22, 24, 35, 0.03);
     }
-}
-
-// Button sizes
-.small {
-    min-width: 88px;
-}
-
-.large {
-    min-width: 140px;
-    padding: 14px 16px;
 }

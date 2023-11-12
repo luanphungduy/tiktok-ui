@@ -1,14 +1,4 @@
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faEllipsisVertical,
-    faEarthAsia,
-    faCoins,
-    faGear,
-    faUserAlt,
-    faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
-import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
@@ -19,60 +9,101 @@ import config from '~/config';
 import Search from '../Search';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-import { UploadIcon, MessageIcon, InboxIcon } from '~/components/Icons';
+import {
+    UploadIcon,
+    MessageIcon,
+    InboxIcon,
+    MoreVerticalIcon,
+    UserIcon,
+    LightBulbIcon,
+    LanguagesIcon,
+    KeyboardIcon,
+    SavedIcon,
+    TiktokCoinIcon,
+    GraphIcon,
+    SettingsIcon,
+    HelpIcon,
+    MoonIcon,
+    ExitIcon,
+} from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LightBulbIcon />,
+        title: 'LIVE Creator Hub',
+        to: '/live/creators',
+    },
+    {
+        icon: <LanguagesIcon />,
         title: 'English',
         children: {
-            title: 'Languages',
+            title: 'Language',
             data: [
                 {
                     type: 'language',
                     code: 'en',
                     title: 'English',
+                    to: '/',
                 },
                 {
                     type: 'language',
                     code: 'vi',
                     title: 'Tiếng Việt',
+                    to: '/',
                 },
             ],
         },
+        to: '/',
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <HelpIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
+        to: '/',
+    },
+    {
+        icon: <MoonIcon />,
+        title: 'Dark mode',
+        to: '/',
     },
 ];
 
 const userMenu = [
     {
-        icon: <FontAwesomeIcon icon={faUserAlt} />,
+        icon: <UserIcon />,
         title: 'View profile',
         to: '/@xmasterno1',
     },
     {
-        icon: <FontAwesomeIcon icon={faCoins} />,
+        icon: <SavedIcon />,
+        title: 'Favorites',
+        to: '/@xmasterno1',
+    },
+    {
+        icon: <TiktokCoinIcon />,
         title: 'Get coins',
         to: '/coin',
     },
     {
-        icon: <FontAwesomeIcon icon={faGear} />,
+        icon: <GraphIcon />,
+        title: 'View Analytics',
+        to: '/creator-center/analytics/overview',
+    },
+    {
+        icon: <SettingsIcon />,
         title: 'Settings',
         to: '/settings',
     },
     ...MENU_ITEMS,
+
     {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
+        icon: <ExitIcon />,
         title: 'Log out',
         to: '/logout',
         separate: true,
@@ -103,12 +134,12 @@ function Header() {
 
                 <div className={cx('actions')}>
                     {currentUser ? (
+                        // When the user is logged in
                         <>
-                            <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
-                                <button className={cx('action-btn')}>
-                                    <UploadIcon />
-                                </button>
-                            </Tippy>
+                            <Button text leftIcon={<UploadIcon />} className={cx('header-upload-btn')}>
+                                Upload
+                            </Button>
+
                             <Tippy delay={[0, 50]} content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <MessageIcon />
@@ -122,22 +153,27 @@ function Header() {
                             </Tippy>
                         </>
                     ) : (
+                        // When the user is not logged in
                         <>
-                            <Button text>Upload</Button>
-                            <Button primary>Log in</Button>
+                            <Button text leftIcon={<UploadIcon />} className={cx('header-upload-btn')}>
+                                Upload
+                            </Button>
+                            <Button primary className={cx('header-login-btn')}>
+                                Log in
+                            </Button>
                         </>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1697014800&x-signature=RpImAtL%2FVEg0ueRVs8BufthOJ7w%3D"
+                                src="https://p9-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1698242400&x-signature=ckl%2Fv1n7TIcVnMIQABn4huA%2Brtg%3D"
                                 alt="Phung Duy Luan"
                                 fallback="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/50a2f85729d519f578a2b61eb5c82d4d.jpeg?x-expires=1697014800&x-signature=1MOwMElZ7P5IqW%2Bbk6b6W%2FiK12A%3D"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                                <MoreVerticalIcon />
                             </button>
                         )}
                     </Menu>

@@ -9,12 +9,10 @@ function Button({
     to,
     href,
     primary,
-    outline = false,
-    text = false,
-    round = false,
-    disabled = false,
-    small = false,
-    large = false,
+    outline,
+    text,
+    round,
+    disabled,
     children,
     className,
     leftIcon,
@@ -51,8 +49,6 @@ function Button({
         text,
         round,
         disabled,
-        small,
-        large,
     });
 
     return (
