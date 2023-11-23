@@ -13,6 +13,12 @@
     --default-layout-width: 100%;
 }
 
+[data-theme='dark'] {
+    background-color: var(--black);
+    color: var(--white);
+    // Viết tiếp CSS
+}
+
 * {
     margin: 0;
     padding: 0;
