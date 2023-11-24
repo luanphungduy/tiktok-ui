@@ -3,14 +3,14 @@ import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import styles from './MenuItem.module.scss';
 import { useContext } from 'react';
-import { ThemeContext } from '~/components/ThemeProvider/ThemeProvider';
+import { ThemeContext } from '~/components/ThemeProvider';
+import { ModalContext } from '~/components/ModalProvider';
 
 const cx = classNames.bind(styles);
 
 function MenuItem({ data, onClick, isBelongsToSubMenu = false }) {
-    const contextTheme = useContext(ThemeContext);
-
-    const { darkTheme, setDarkMode, setLightMode } = contextTheme;
+    const { darkTheme, setDarkMode, setLightMode } = useContext(ThemeContext);
+    const { handleShowLogoutModal } = useContext(ModalContext);
 
     const classes = cx('menu-item', {
         isBelongsToSubMenu,
@@ -23,7 +23,12 @@ function MenuItem({ data, onClick, isBelongsToSubMenu = false }) {
         } else {
             setLightMode();
         }
-        // Logic toggle theme ...
+    };
+
+    onClick = () => {
+        if (data.title === 'Log out') {
+            handleShowLogoutModal();
+        }
     };
 
     return (

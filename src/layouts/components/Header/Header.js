@@ -26,6 +26,8 @@ import {
     MoonIcon,
     ExitIcon,
 } from '~/components/Icons';
+import { useContext } from 'react';
+import { ModalContext } from '~/components/ModalProvider';
 
 const cx = classNames.bind(styles);
 
@@ -105,13 +107,14 @@ const userMenu = [
     {
         icon: <ExitIcon />,
         title: 'Log out',
-        to: '/logout',
+        to: '/',
         separate: true,
     },
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
+    const { handleShowLoginModal } = useContext(ModalContext);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -158,7 +161,7 @@ function Header() {
                             <Button text leftIcon={<UploadIcon />} className={cx('header-upload-btn')}>
                                 Upload
                             </Button>
-                            <Button primary className={cx('header-login-btn')}>
+                            <Button primary className={cx('header-login-btn')} onClick={handleShowLoginModal}>
                                 Log in
                             </Button>
                         </>
