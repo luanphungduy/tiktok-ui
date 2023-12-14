@@ -1,10 +1,51 @@
 .wrapper {
-    width: 240px;
-    padding: 20px 8px 26px 8px;
+    width: var(--sidebar-width);
+    padding: 20px 0 26px 8px;
     padding-left: 8px;
+    position: fixed;
+    z-index: 99;
+    background-color: var(--white);
+    height: calc(100vh - var(--default-layout-header-height));
+    overflow-y: scroll;
 }
 
 .add-padding {
     box-sizing: unset;
     padding: 4px;
+}
+
+.login-container {
+    position: relative;
+    padding: 20px 8px 24px;
+    margin: 3px;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 8px;
+    right: 8px;
+    background: rgba(22, 24, 35, 0.12);
+    transform: scaleY(0.5);
+    top: 0px;
+}
+
+.login-title {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.6rem;
+    line-height: 21px;
+}
+
+.login-btn {
+    padding: 6px 8px;
+    margin-top: 20px;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 168px;
+    min-height: 48px;
+    font-size: 1.8rem;
+    line-height: 25px;
+    font-weight: 600;
+    font-family: TikTokDisplayFont, PingFangSC, sans-serif;
 }

@@ -1,0 +1,98 @@
+.wrapper {
+    width: 403px;
+    margin: auto;
+}
+
+.form-label-container {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.switch-btn {
+    display: inline-block;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    &:hover {
+        color: var(--text-color);
+        text-decoration: underline;
+    }
+}
+
+.form-input {
+    position: relative;
+    margin-bottom: 9px;
+
+    input {
+        padding-inline: 12px 90px;
+        border-radius: 2px;
+        border: 1px solid rgba(22, 24, 35, 0.12);
+        color: rgb(22, 24, 35);
+        background-color: rgba(22, 24, 35, 0.06);
+        line-height: 100%;
+        outline: none;
+        font-size: 1.6rem;
+        height: 44px;
+        caret-color: var(--primary);
+        width: 100%;
+    }
+}
+
+.box-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 44px;
+    padding-inline-end: 16px;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.wrong-info-icon {
+    color: var(--primary);
+}
+
+.hide-password-btn {
+    margin-inline-start: 16px;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.5;
+}
+
+.invalid {
+    font-size: 1.2rem;
+    line-height: 15px;
+    color: var(--primary);
+    margin: 4px 0;
+}
+
+.forgot-password {
+    margin-top: 11px;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    &:hover {
+        color: var(--text-color);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.login-btn {
+    width: 100%;
+    min-width: 120px;
+    min-height: 46px;
+    margin-top: 21px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    line-height: 22px;
+    font-weight: 700;
+}

@@ -8,8 +8,7 @@ export const getSuggested = async (page = 1, perPage = 5) => {
                 per_page: perPage,
             },
             headers: {
-                Authorization:
-                    'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90aWt0b2suZnVsbHN0YWNrLmVkdS52blwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTcwMDEyNDM1MiwiZXhwIjoxNzAyNzE2MzUyLCJuYmYiOjE3MDAxMjQzNTIsImp0aSI6InlWbnVkdjlqSGJvNk4xa2giLCJzdWIiOjY0NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.PgPFo4_tA_AG88kn1KI1sgrjTbNuKTHwBsUk5RtYmPk',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
         return res.data;

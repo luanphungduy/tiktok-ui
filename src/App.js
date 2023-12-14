@@ -1,12 +1,11 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import DefaultLayout from '~/layouts';
-import Modal from '~/components/Modal';
-import { ModalContext } from './components/ModalProvider';
 
 function App() {
-    const { modalVisible } = useContext(ModalContext);
+    console.log('test re-render APP');
+
     return (
         <Router>
             <div className="App">
@@ -36,7 +35,6 @@ function App() {
                     })}
                 </Routes>
             </div>
-            {modalVisible && <Modal />}
         </Router>
     );
 }

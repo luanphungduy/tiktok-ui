@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.options-container {
+    width: 377px;
+    margin: auto;
+}
+
+.option-item {
+    height: 44px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 0px 12px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.option-title {
+    margin-left: -12px;
+}

@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-
 import styles from './Sidebar.module.scss';
 import config from '~/config';
 import Menu, { MenuItem } from './Menu';
@@ -18,32 +16,14 @@ import {
     UserActiveIcon,
 } from '~/components/Icons';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
-// import * as userService from '~/services/userService';
-import * as followService from '~/services/followService';
+import { useSelector } from 'react-redux';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
 function Sidebar() {
-    // const [suggestedUsers, setSuggestedUsers] = useState([]);
-    const [followingUsers, setFollowingUsers] = useState([]);
-
-    useEffect(() => {
-        // userService
-        //     .getSuggested()
-        //     .then((data) => {
-        //         // console.log(data);
-        //         setSuggestedUsers(data);
-        //     })
-        //     .catch((error) => console.log(error));
-
-        followService
-            .getFollowing()
-            .then((data) => {
-                // console.log(data);
-                setFollowingUsers(data);
-            })
-            .catch((error) => console.log(error));
-    }, []);
+    console.log('test re-render sidebar');
+    const loginData = useSelector((state) => state.login.loginData);
 
     return (
         <aside className={cx('wrapper')}>
@@ -69,8 +49,17 @@ function Sidebar() {
                     activeIcon={<UserActiveIcon className={cx('add-padding')} />}
                 />
             </Menu>
-            {/* <SuggestedAccounts label="Suggested accounts" data={suggestedUsers} /> */}
-            <SuggestedAccounts label="Following accounts" data={followingUsers} />
+
+            {loginData ? (
+                <SuggestedAccounts label="Following accounts" />
+            ) : (
+                <div className={cx('login-container')}>
+                    <p className={cx('login-title')}>Log in to follow creators, like videos, and view comments.</p>
+                    <Button outline className={cx('login-btn')}>
+                        Log in
+                    </Button>
+                </div>
+            )}
             <Footer />
         </aside>
     );

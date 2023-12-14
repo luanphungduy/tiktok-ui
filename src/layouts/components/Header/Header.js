@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleShowAuthForm, handleShowEditProfileForm } from '~/state/modalSlice';
+import { setLoginData } from '~/state/loginSlice';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
@@ -26,8 +30,7 @@ import {
     MoonIcon,
     ExitIcon,
 } from '~/components/Icons';
-import { useContext } from 'react';
-import { ModalContext } from '~/components/ModalProvider';
+import * as authService from '~/services/authService';
 
 const cx = classNames.bind(styles);
 
@@ -113,8 +116,24 @@ const userMenu = [
 ];
 
 function Header() {
-    const currentUser = false;
-    const { handleShowLoginModal } = useContext(ModalContext);
+    console.log('test re-render header');
+    const dispatch = useDispatch();
+    const loginData = useSelector((state) => state.login.loginData);
+    const isLogin = !!localStorage.getItem('token');
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await authService.getCurrentUser();
+            if (result) {
+                dispatch(setLoginData(result));
+            }
+        };
+        if (isLogin) {
+            fetchApi();
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -136,7 +155,7 @@ function Header() {
                 <Search />
 
                 <div className={cx('actions')}>
-                    {currentUser ? (
+                    {loginData ? (
                         // When the user is logged in
                         <>
                             <Button text leftIcon={<UploadIcon />} className={cx('header-upload-btn')}>
@@ -158,28 +177,40 @@ function Header() {
                     ) : (
                         // When the user is not logged in
                         <>
-                            <Button text leftIcon={<UploadIcon />} className={cx('header-upload-btn')}>
+                            <Button
+                                text
+                                leftIcon={<UploadIcon />}
+                                className={cx('header-upload-btn')}
+                                onClick={() => dispatch(handleShowEditProfileForm())}
+                            >
                                 Upload
                             </Button>
-                            <Button primary className={cx('header-login-btn')} onClick={handleShowLoginModal}>
+                            <Button
+                                primary
+                                className={cx('header-login-btn')}
+                                onClick={() => dispatch(handleShowAuthForm())}
+                            >
                                 Log in
                             </Button>
                         </>
                     )}
-                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
-                        {currentUser ? (
+                    {loginData && (
+                        <Menu items={userMenu} onChange={handleMenuChange}>
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p9-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1700298000&x-signature=OzRlyo5OFanTmmAug7vUaf%2BC7yw%3D"
-                                alt="Phung Duy Luan"
-                                fallback="https://p9-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/9090525af8ba921a4e5946cd218c8bd7.jpeg?x-expires=1700298000&x-signature=OzRlyo5OFanTmmAug7vUaf%2BC7yw%3D"
+                                src={loginData.avatar}
+                                alt={loginData.nickname}
+                                // fallback={'dcm'}
                             />
-                        ) : (
+                        </Menu>
+                    )}
+                    {!loginData && (
+                        <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                             <button className={cx('more-btn')}>
                                 <MoreVerticalIcon />
                             </button>
-                        )}
-                    </Menu>
+                        </Menu>
+                    )}
                 </div>
             </div>
         </header>
@@ -187,3 +218,6 @@ function Header() {
 }
 
 export default Header;
+
+// Bug
+// Re-render nhiều lần --> tối ưu/

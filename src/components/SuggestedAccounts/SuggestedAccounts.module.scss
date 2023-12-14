@@ -40,6 +40,9 @@
 .item-info {
     flex: 1;
     height: 32px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .username {
@@ -62,13 +65,12 @@
 }
 
 .more-btn {
-    font-family: TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-family: TikTokFont, sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 18px;
     padding: 0px 8px;
     margin-top: 8px;
-
     color: var(--primary);
     background-color: transparent;
     cursor: pointer;

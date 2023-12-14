@@ -22,7 +22,14 @@ function AccountItem({ data }) {
 
     return (
         <div>
-            <HeadlessTippy interactive delay={[800, 0]} offset={[-20, 0]} placement="bottom" render={renderPreview}>
+            <HeadlessTippy
+                appendTo={document.getElementById('root')}
+                interactive
+                delay={[800, 0]}
+                offset={[-20, 0]}
+                placement="bottom"
+                render={renderPreview}
+            >
                 <div className={cx('account-item')}>
                     <Image className={cx('avatar')} src={data.avatar} alt={data.first_name} />
                     <div className={cx('item-info')}>

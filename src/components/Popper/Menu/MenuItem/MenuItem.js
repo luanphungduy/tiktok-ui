@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import { useSelector, useDispatch } from 'react-redux';
+import { setDarkMode, setLightMode } from '~/state/themeSlice';
+import { handleShowLogoutForm } from '~/state/modalSlice';
 import Button from '~/components/Button';
 import styles from './MenuItem.module.scss';
-import { useContext } from 'react';
-import { ThemeContext } from '~/components/ThemeProvider';
-import { ModalContext } from '~/components/ModalProvider';
 
 const cx = classNames.bind(styles);
 
 function MenuItem({ data, onClick, isBelongsToSubMenu = false }) {
-    const { darkTheme, setDarkMode, setLightMode } = useContext(ThemeContext);
-    const { handleShowLogoutModal } = useContext(ModalContext);
+    const darkTheme = useSelector((state) => state.theme.darkTheme);
+    const dispatch = useDispatch();
 
     const classes = cx('menu-item', {
         isBelongsToSubMenu,
@@ -19,15 +19,15 @@ function MenuItem({ data, onClick, isBelongsToSubMenu = false }) {
 
     const toggleTheme = () => {
         if (!darkTheme) {
-            setDarkMode();
+            dispatch(setDarkMode());
         } else {
-            setLightMode();
+            dispatch(setLightMode());
         }
     };
 
     onClick = () => {
         if (data.title === 'Log out') {
-            handleShowLogoutModal();
+            dispatch(handleShowLogoutForm());
         }
     };
 

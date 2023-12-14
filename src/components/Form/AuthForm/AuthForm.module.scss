@@ -1,0 +1,86 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 693px;
+    width: 483px;
+    padding-top: 48px;
+    border-radius: 8px;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.title {
+    color: var(--text-color);
+    font-family: TikTokDisplayFont;
+    font-size: 3.2rem;
+    margin: 16px auto;
+    font-weight: 700;
+    text-align: center;
+}
+
+.scroll-content {
+    width: 100%;
+    height: 518px;
+    margin: 0 auto;
+    overflow-y: auto;
+    flex: 1 1 0%;
+}
+
+.policy {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+    padding: 16px 30px;
+}
+
+.policy-description {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.2rem;
+    line-height: 15px;
+    width: 375px;
+    text-align: center;
+}
+
+.footer {
+    color: var(--text-color);
+    height: 64px;
+    border-top: 0.5px solid #1618231f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 18px;
+}
+
+.auth-btn {
+    margin-left: 5px;
+    font-weight: 600;
+    color: rgb(254, 44, 85);
+}
+
+.go-back-btn {
+    left: 16px;
+    position: absolute;
+    top: 16px;
+    cursor: pointer;
+}
+
+.close-form-btn {
+    position: absolute;
+    z-index: 1;
+    top: 24px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(22, 24, 35, 0.03);
+    cursor: pointer;
+    transform: scale(1.7);
+}
