@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
-import { handleHideForm } from '~/state/modalSlice';
+import { handleHideForm } from '~/redux/state/modalSlice';
 import styles from './EditProfileForm.module.scss';
 import { CloseIcon } from '~/components/Icons';
 

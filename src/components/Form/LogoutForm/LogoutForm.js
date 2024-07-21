@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
-import { setLoginData } from '~/state/loginSlice';
-import { handleHideForm } from '~/state/modalSlice';
+import { setLoginData } from '~/redux/state/loginSlice';
+import { handleHideForm } from '~/redux/state/modalSlice';
 import styles from './LogoutForm.module.scss';
 import Button from '~/components/Button';
 import * as authService from '~/services/authService';

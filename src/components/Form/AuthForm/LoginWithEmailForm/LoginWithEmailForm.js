@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchApi } from '~/state/loginSlice';
+import { fetchApi } from '~/redux/state/loginSlice';
 import styles from './LoginWithEmailForm.module.scss';
 import { EyeIcon, HiddenEyeIcon, WarningIcon } from '~/components/Icons';
 import Button from '~/components/Button';

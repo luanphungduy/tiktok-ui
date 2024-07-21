@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setAuthToRegisterWithEmail } from '~/state/modalSlice';
+import { setAuthToRegisterWithEmail } from '~/redux/state/modalSlice';
 import classNames from 'classnames/bind';
 import styles from './OptionsRegisterForm.module.scss';
 import {

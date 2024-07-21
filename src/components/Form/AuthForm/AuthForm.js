@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleHideForm, setAuthToOptionsRegister, setAuthToOptionsLogin } from '~/state/modalSlice';
+import { handleHideForm, setAuthToOptionsRegister, setAuthToOptionsLogin } from '~/redux/state/modalSlice';
 import styles from './AuthForm.module.scss';
 import { CloseIcon, GoBackIcon } from '~/components/Icons';
 import {

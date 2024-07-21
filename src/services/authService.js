@@ -27,7 +27,15 @@ export const login = async (email, password) => {
 
 export const logout = async () => {
     try {
-        const res = await httpRequest.post('auth/logout');
+        const res = await httpRequest.post(
+            'auth/logout',
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            },
+        );
         return res;
     } catch (error) {
         console.log(error);

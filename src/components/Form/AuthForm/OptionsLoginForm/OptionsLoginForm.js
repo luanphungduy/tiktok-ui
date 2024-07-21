@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setAuthToLoginWithEmail, setAuthToLoginWithQR } from '~/state/modalSlice';
+import { setAuthToLoginWithEmail, setAuthToLoginWithQR } from '~/redux/state/modalSlice';
 import classNames from 'classnames/bind';
 import styles from './OptionsLoginForm.module.scss';
 import {
